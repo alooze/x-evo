@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>X-evo by alooze</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>X-evo</h1>
+        <p>Механизм расширения для MODX Evolution / Clipper CMS</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/alooze/x-evo" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/alooze/x-evo/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/alooze/x-evo/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="%D0%9F%D1%80%D0%B5%D0%B4%D1%8B%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F" class="anchor" href="#%D0%9F%D1%80%D0%B5%D0%B4%D1%8B%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F"><span class="octicon octicon-link"></span></a>Предыстория</h1>
+
+<p>Идея давно витала в воздухе. Качество и структура php кода в ядре Ево никак не подразумевали удобного программирования. Сама идеология работы modx подразумевает, что сайт собирается из кусков php кода, написанных как угодно. Однако, когда из проекта в проект тянутся одни и те же стандартные куски кода для нестандартных сниппетов, начинаешь сильно нервничать.</p>
+
+<p>А тут еще и сам php не стоит на месте. Появляются возможности, которых просто <em>очень</em> не хватает в разработке. В итоге (буду говорить только о себе) появлялись различные способы расширить возможности Ево за счет силового добавления в объект $modx непредусмотренных атрибутов и методов. Хоть это и заставляло кривиться любителей чистоты ООП кода, но работало. </p>
+
+<p>И вот настало время, когда появился composer и удобное управление классами. И внедрять сторонние библиотеки в modx стало невозможно, а не внедрять - слишком накладно. </p>
+
+<h1>
+<a name="%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F" class="anchor" href="#%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F"><span class="octicon octicon-link"></span></a>История</h1>
+
+<p>В результате сравнительно небольших усилий была спроектирована структура построения механизма расширений именно с точки зрения php разработчика. Суть вот в  чем.</p>
+
+<p>При запуске modx стартует плагин, который запускает автолоадер. Сравнительно небольшие соглашения по размещению файлов с библиотеками позволяют в этом же плагине через пространства имен подключать практически любые сторонние библиотеки. Управляет этим всем очень простой код, который я пока приводить и комментировать не буду; скорее всего все это еще будет меняться, так как есть желание в будущем прикрутить под него нормальный механизм установки/обновления. </p>
+
+<p>В качестве примера работы механизма расширений выбран проект <a href="https://github.com/Andre-487/php_rutils">https://github.com/Andre-487/php_rutils</a> - небольшая библиотека, которая позволяет работать с русским текстом в датах, временных интервалах, переводить числа в пропись и немного типографировать. После несложной регистрации в плагине:</p>
+
+<pre><code>$loader-&gt;addNamespace('Modx\Ext\Rutils', MODX_BASE_PATH.'assets/extensions/Rutils/lib');
+</code></pre>
+
+<p>становится возможным в любом сниппете написать следующее:</p>
+
+<pre><code>&lt;?php
+use Modx\Ext\Rutils\RUtils;
+use Modx\Ext\Rutils\TypoRules;
+
+echo $numeral-&gt;getInWordsFloat(100.025),'&lt;br&gt;&lt;br&gt;';
+
+//Result: сто целых двадцать пять тысячных
+</code></pre>
+
+<p>Собственно, пока это все. В планах (собственно, сейчас идет разработка) инструментарий для управления каталогами.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/alooze">alooze</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
