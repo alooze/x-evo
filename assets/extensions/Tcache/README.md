@@ -116,4 +116,4 @@ Examples:
         $pipe->get('foo');
     });
 
-More examples in [examples/](https://github.com/maximebf/CacheCache/tree/master/examples)
+More examples in [examples/](https://github.com/alooze/x-evo/tree/master/assets/extensions/Tcache/examples)
