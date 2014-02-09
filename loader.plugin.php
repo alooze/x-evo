@@ -36,6 +36,8 @@ switch ($e->name) {
             $loader->addNamespace('Modx\Ext\Xadmin\Models', MODX_BASE_PATH.'assets/extensions/ActiveRecord/models');
 
             $loader->addNamespace('ActiveRecord', MODX_BASE_PATH.'assets/extensions/ActiveRecord/lib');
+
+            $loader->addNamespace('CacheCache', MODX_BASE_PATH.'assets/extensions/CacheCache/src/CacheCache');
         }
     break;
 }
