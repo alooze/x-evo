@@ -37,7 +37,7 @@ switch ($e->name) {
 
             $loader->addNamespace('ActiveRecord', MODX_BASE_PATH.'assets/extensions/ActiveRecord/lib');
 
-            $loader->addNamespace('CacheCache', MODX_BASE_PATH.'assets/extensions/CacheCache/src/CacheCache');
+            $loader->addNamespace('CacheCache', MODX_BASE_PATH.'assets/extensions/Tcache/src/CacheCache');
         }
     break;
 }
