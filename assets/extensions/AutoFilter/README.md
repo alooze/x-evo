@@ -12,7 +12,7 @@ AutoFilter V1
 ----------------
 После установки сниппета, требуется создать 2 чанка: для формы фильтрации и для вывода результатов. В форме фильтрации обязательным является скрытое поле с id вызова сниппета. Остальные поля задаются в виде плейсхолдеров. Пример:
 
-//test.form.tpl//
+_test.form.tpl_
 
 ```
 <form name="form" id="form" method="get" action="">
@@ -30,17 +30,17 @@ AutoFilter V1
 
 Пример чанка с обработкой результатов:
 
-//test.ditto.tpl//
+_test.ditto.tpl_
 
 ```
-Найдены [+test.items_show_count+] товаров из [+test.items_count+]: ids = [+1test.items+]
+Найдены [+test.items_show_count+] товаров из [+test.items_count+]: ids = [+test.items+]
 
 <br>
 [[Ditto? &paginate=`1` &display=`6` &documents=`[+test.items+]` ]]
 [+pages+]
 ```
 
-Вызов AutoFilter:
+_Вызов AutoFilter:_
 
 ```
 [!autoFilter?
