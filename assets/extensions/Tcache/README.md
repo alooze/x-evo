@@ -17,7 +17,7 @@ Caching framework for PHP 5.3+
 
 ```
 <?php
-use CacheCache\Tcache as Cache;
+use Tcache\Tcache as Cache;
 $c = new Cache();
 echo $c->runSnippet('Ditto', array('parents'=>0)); // первый вызов
 // Mem : 2.75 mb, MySQL: 0.0573 s, 20 request(s), PHP: 0.2261 s, total: 0.2834 s, document from database.
@@ -38,9 +38,9 @@ echo $c->runSnippet('Ditto', array('parents'=>0, 'display'=>4, 'paginate'=>1), a
 
 ```
 <?php
-use CacheCache\Tcache as Cache;
-use CacheCache\CacheTags\UserCacheTag as Utag;
-use CacheCache\CacheTags\RequestCacheTag as Rtag;
+use Tcache\Tcache as Cache;
+use Tcache\CacheTags\UserCacheTag as Utag;
+use Tcache\CacheTags\RequestCacheTag as Rtag;
 
 $c = new Cache();
 
@@ -53,8 +53,8 @@ echo $c->withTags(array(Utag::by($userId), Rtag::by('start')))->runSnippet('Ditt
 Очистка кеша по тегу ParentTag (сохраняем страницу, которая будет влиять на вывод Ditto):
 
 ```
-use CacheCache\Tcache as Cache;
-use CacheCache\CacheTags\ParentCacheTag as Ptag;
+use Tcache\Tcache as Cache;
+use Tcache\CacheTags\ParentCacheTag as Ptag;
 $c = new Cache();
 $c->flushByTag(Ptag::by($modx->documentObject['parent']));
 ```
@@ -62,7 +62,7 @@ $c->flushByTag(Ptag::by($modx->documentObject['parent']));
 Очистка кеша по всем тегам RequestTag 
 
 ```
-use CacheCache\CacheTags\RequestCacheTag as Rtag;
+use Tcache\CacheTags\RequestCacheTag as Rtag;
 ...
 $c->flushByTagType(Rtag::all('start'));
 // или вообще ПО ВСЕМ
