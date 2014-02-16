@@ -1,7 +1,4 @@
 <?php
-/**
- * assets/extensions/Core/loader.plugin.php
- */
 $e = $modx->event;
 
 $debug = 1;
