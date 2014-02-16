@@ -20,7 +20,7 @@ use Tcache\Backends\AbstractBackend as Backend;
 class AbstractCache implements InterfaceCache
 {
     /** @var string */
-    public static $namespaceSeparator = ':';
+    public static $namespaceSeparator = '.';
 
     /** @var string */
     protected $namespace;
